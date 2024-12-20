@@ -1,0 +1,40 @@
+/* Edit and Delete Button Styling */
+.btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+/* Edit Button */
+.btn-warning {
+    background-color: #f39c12; /* Orange for Edit */
+    color: white;
+    border: 1px solid #e67e22;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+    transform: scale(1.05); /* Slightly zoom the button on hover */
+}
+
+/* Delete Button */
+.btn-danger {
+    background-color: #e74c3c; /* Red for Delete */
+    color: white;
+    border: 1px solid #c0392b;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: scale(1.05); /* Slightly zoom the button on hover */
+}
+
+/* General Button Styles */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

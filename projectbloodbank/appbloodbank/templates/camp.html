@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Camps</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  
+  body{
+    font-family: 'poppins';
+    font-size: 300;
+    font-style: normal;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.camp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.camp-card {
+    background-color: #f4f4f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.camp-card h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.camp-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.camp-card p strong {
+    color: #333;
+}
+.camp .btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.camp .btn:hover {
+    background-color: #007bff;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donation Camps</h1>
+        <div class="camp-list">
+            {% for camp in camps %}
+            <div class="camp-card">
+                <h2>{{ camp.camp_name }}</h2>
+                <p><strong>Location:</strong> {{ camp.location }}</p>
+                <p><strong>Start Date:</strong> {{ camp.start_date }}</p>
+                <p><strong>End Date:</strong> {{ camp.end_date }}</p>
+                <p><strong>Contact:</strong> {{ camp.contact }}</p>
+            </div>
+            {% empty %}
+            <p>No donation camps available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <center><div class="camp">
+        <a href="{% url 'home' %}" class="btn">Return to Home</a>
+    </div></center>
+</body>
+</html>

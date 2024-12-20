@@ -1,0 +1,7 @@
+Python 3.12.4
+Django 5.1.2
+Html
+CSS3
+Bootstrap5
+Javascript
+Mysql using - Xampp server

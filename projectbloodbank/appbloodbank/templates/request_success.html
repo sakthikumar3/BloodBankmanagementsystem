@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Success</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  
+  body{
+    font-family: 'poppins';
+    font-size: 300;
+    font-style: normal;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.success-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.success-card h1 {
+    color: #28a745;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.success-card p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.success-card .btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.success-card .btn:hover {
+    background-color: #218838;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-card">
+            <h1>Request Submitted Successfully</h1>
+            <p>Thank you for your request. Our team will process it and get back to you shortly.</p>
+            <a href="{% url 'home' %}" class="btn">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Status</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+       
+       body{
+            font-family: 'poppins';
+            font-size: 300;
+            font-style: normal;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+        color: #d9534f;
+        text-align: center;
+        margin-bottom: 20px;
+        animation: slideDown 0.8s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .status-card {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-left: 10px solid;
+        }
+        .status-pending {
+            border-color: #f1c40f; 
+        }
+        .status-accepted {
+            border-color: #27ae60;
+        }
+        .status-rejected {
+            border-color: #e74c3c;
+        }
+        .status-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .status-card p {
+            margin: 0;
+        }
+        .camp .btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.camp .btn:hover {
+    background-color: #007bff;
+}
+    </style>
+</head>
+<header>
+    <h1>Blood Donation Management System</h1>
+</header>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Receiver Status</h1>
+        {% for blood_request in blood_requests %}
+            <div class="status-card 
+                {% if blood_request.status == 'Pending' %}status-pending{% endif %}
+                {% if blood_request.status == 'Accepted' %}status-accepted{% endif %}
+                {% if blood_request.status == 'Rejected' %}status-rejected{% endif %}
+            ">
+                <h3>{{ blood_request.name }}</h3>
+                <p>{{ blood_request.message }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <center><div class="camp">
+        <a href="{% url 'home' %}" class="btn">Return to Home</a>
+    </div></center>
+</body>
+</html>

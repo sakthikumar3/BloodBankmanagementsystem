@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Requests</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        
+        body{
+          font-family: 'poppins';
+          font-size: 300;
+          font-style: normal;
+        }
+        </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Vertical Navbar -->
+        <div class="vertical-navbar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="{% url 'admin_dashboard' %}">Go to Admin Dashboard</a></li>
+                <li><a href="{% url 'donor-list' %}">Donor List</a></li>
+                <li><a href="{% url 'blood_stock' %}">Blood Stock</a></li>
+                <li><a href="{% url 'blood-requests' %}">Blood Requests</a></li>
+                <li><a href="{% url 'create-donation-camp' %}">Donation Camps</a></li>
+                <li><a href="{% url 'donation-camps' %}">Camps List</a></li>
+                <li><a href="{% url 'home' %}">Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Blood Requests</h1>
+            <p>Pending Blood Requests: {{ pending_requests }}</p>
+
+            <!-- Example Table for Blood Requests -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Units Requested</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                        <tr>
+                            <td>{{ request.name }}</td>
+                            <td>{{ request.blood_group }}</td>
+                            <td>{{ request.units_requested }}</td>
+                            <td>{{ request.status }}</td>
+                            <td>
+                                <a href="{% url 'update-blood-request-status' request.id 'Accepted' %}" class="btn btn-success">Accept</a>
+                                <a href="{% url 'update-blood-request-status' request.id 'Rejected' %}" class="btn btn-danger">Reject</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

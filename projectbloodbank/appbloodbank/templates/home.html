@@ -1,0 +1,298 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Bank</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  
+  body{
+    font-family: 'poppins';
+    font-size: 300;
+    font-style: normal;
+  }
+  /* General Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Donation Section Styling */
+.donation-section,
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.donation-section img,
+.about-section img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-out;
+}
+
+.donation-section .donation-content,
+.about-section .about-content {
+  max-width: 600px;
+  text-align: justify;
+  animation: slideIn 1.5s ease-out;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #a30000;
+}
+
+/* About Section Styling */
+.about-section {
+  flex-direction: column-reverse;
+}
+
+.about-section img {
+  order: 2;
+}
+
+.about-section .about-content {
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .donation-section,
+  .about-section {
+    flex-direction: row;
+  }
+
+  .about-section {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.contact-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-container h1 {
+    margin-bottom: 20px;
+    color:  #d9534f;
+}
+
+.contact-container p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.contact-details {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.contact-details p {
+    margin: 5px 0;
+}
+
+.contact-details a {
+    color:  #d9534f;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color:  #d9534f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #005bb5;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Section Heading */
+.section-heading {
+  font-size: 32px;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+      <!-- Logo/Brand -->
+      <a class="navbar-brand" href="#">Blood Bank</a>
+
+      <!-- Toggle Button for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'home' %}">
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register_donor' %}">
+            Donate Blood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'request_blood' %}">Request Blood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'camp_list' %}">Donation Camps</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'receiver_status'%}" class="nav-link">Receiver Blood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-light ms-2" href="{% url 'login' %}">
+              <i class='bx bxs-user'></i>
+            Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div class="container mt-5">
+    <!-- Donation Section -->
+    <div class="donation-section">
+      <img src="{% static 'img/img5.gif' %}" alt="Sample Image" class="donation-image">
+      <div class="donation-content">
+        <h2>Donate Your Blood - Save Lives Today!</h2>
+        <p>By donating blood, you are not just giving a part of yourself; you are giving hope, health, and a second chance to someone in need. Join us in saving lives by donating blood at our upcoming blood donation camp. Every drop counts!</p>
+        <a href="{% url 'register_donor' %}">
+          <button type="button" class="btn btn-danger">Donate Blood</button>
+        </a>
+      </div>
+    </div>
+  
+    <br><br>
+  
+    <!-- About Us Section -->
+    <h2 class="section-heading text-center" id="about">About Us</h2>
+    <div class="about-section">
+      <div class="about-content">
+        <p>A Blood Bank Management System is essential for efficiently managing blood donations, inventory, and patient requirements. It tracks donor details, blood types, and donation histories while ensuring the safe and timely distribution of blood to patients in need. The system enables hospitals to monitor blood stock levels, manage donor recruitment, and match blood with recipients based on medical compatibility. By maintaining a centralized database, it reduces wastage, ensures quick access to life-saving resources, and helps prevent shortages, ultimately saving lives and improving patient care.</p>
+      </div>
+      <img src="{% static 'img/img8.gif' %}" alt="Sample Image" class="about-image">
+    </div>
+    <!-- Contact -->
+    <div class="contact-container" id="contact">
+      <h1>Contact Us</h1>
+      <p>We’re here to help! Reach out to us for any inquiries, support, or feedback.</p>
+      <div class="contact-details">
+          <p><strong>Address:</strong>Anna Nagar,Govt hospital opposite ,Maduari-625402 </p>
+          <p><strong>Phone:</strong> +91 9798120015</p>
+          <p><strong>Email:</strong>blooddonatesystem@gmail.com</p>
+          <p><strong>Website:</strong> <a href="#">www.bloodbanksystem.com</a></p>
+      </div>
+      <form action="#" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          
+          <button type="submit">Submit</button>
+      </form>
+  </div>
+  </div>
+  <script>
+    document.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+  </script>
+</body>
+</html>
